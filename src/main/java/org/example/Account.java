@@ -16,7 +16,9 @@ public class Account {
     }
 
     public void setOwnerName(String ownerName) {
-        if(ownerName.equals(null) || ownerName.equals("")) throw new IllegalArgumentException("Имя владельца не может быть пустым!");
+        if((ownerName == null) || ownerName.isEmpty()) {
+            throw new IllegalArgumentException("Имя владельца не может быть пустым!");
+        }
         this.ownerName = ownerName;
     }
 
@@ -25,9 +27,14 @@ public class Account {
     }
 
     public void setCurrencyAmount(Currency currency, Long amount){
-        if(amount<0) throw new IllegalArgumentException("Количество валюты не должно быть отрицательным!");
+        if(currency == null) {
+            throw new IllegalArgumentException("Валюта должна быть указана!");
+        }
+        if(amount<0) {
+            throw new IllegalArgumentException("Количество валюты не должно быть отрицательным!");
+        }
         if(this.savings == null){
-            this.savings = new ArrayList<CurrencyAmount>();
+            this.savings = new ArrayList<>();
             this.savings.add(new CurrencyAmount(currency, amount));
             return;
         }
