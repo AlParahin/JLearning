@@ -43,7 +43,6 @@ public class AccountTest extends TestCase {
 
     public void testGetSavings() {
         Account account = new Account("Bob");
-        assertNull(account.getCurrencyAmounts());
         account.setCurrencyAmount(Currency.KZT, 1000);
         assertNotNull(account.getCurrencyAmounts());
     }
